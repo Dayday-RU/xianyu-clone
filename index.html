@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>闲鱼 - 二手交易平台</title>
+    <title>小雅精品店 - 个人商店</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -19,16 +19,12 @@
 
         <!-- ====== 顶部搜索栏 ====== -->
         <header class="top-header" id="topHeader">
-            <div class="header-left" id="locationBtn">
-                <span class="location-text">杭州</span>
-                <svg class="icon-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7 10l5 5 5-5z" fill="#999"/></svg>
+            <div class="header-left shop-logo">
+                <span class="shop-name">小雅精品店</span>
             </div>
             <div class="search-bar" id="searchBar">
                 <svg class="icon-search" viewBox="0 0 24 24" width="16" height="16"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#bbb"/></svg>
-                <input type="text" class="search-input" placeholder="搜闲鱼好物" id="searchInput" readonly>
-                <span class="scan-icon" id="scanBtn">
-                    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M9.5 6.5v3h-3v-3h3M11 5H5v6h6V5zm-1.5 9.5v3h-3v-3h3M11 13H5v6h6v-6zm6.5-6.5v3h-3v-3h3M19 5h-6v6h6V5zm-6 8h1.5v1.5H13V13zm1.5 1.5H16V16h-1.5v-1.5zM16 13h1.5v1.5H16V13zm-3 3h1.5v1.5H13V16zm1.5 1.5H16V19h-1.5v-1.5zM16 16h1.5v1.5H16V16zm1.5-1.5H19V16h-1.5v-1.5zm0 3H19V19h-1.5v-1.5z" fill="#999"/></svg>
-                </span>
+                <input type="text" class="search-input" placeholder="搜索商品" id="searchInput" readonly>
             </div>
             <div class="header-right">
                 <button class="btn-icon" id="msgBtn">
@@ -41,23 +37,14 @@
         <!-- ====== 分类导航 ====== -->
         <nav class="category-nav" id="categoryNav">
             <div class="category-scroll" id="categoryScroll">
-                <span class="category-item active" data-cat="all">推荐</span>
-                <span class="category-item" data-cat="digital">数码</span>
+                <span class="category-item active" data-cat="all">全部</span>
                 <span class="category-item" data-cat="clothes">服饰</span>
                 <span class="category-item" data-cat="beauty">美妆</span>
                 <span class="category-item" data-cat="home">家居</span>
-                <span class="category-item" data-cat="baby">母婴</span>
-                <span class="category-item" data-cat="book">图书</span>
-                <span class="category-item" data-cat="toy">潮玩</span>
-                <span class="category-item" data-cat="sports">运动</span>
-                <span class="category-item" data-cat="pet">宠物</span>
+                <span class="category-item" data-cat="digital">数码</span>
                 <span class="category-item" data-cat="food">食品</span>
-                <span class="category-item" data-cat="car">二手车</span>
-                <span class="category-item" data-cat="luxury">奢侈品</span>
+                <span class="category-item" data-cat="gift">礼品</span>
             </div>
-            <button class="btn-category-more" id="categoryMoreBtn">
-                <svg viewBox="0 0 24 24" width="18" height="18"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="#999"/></svg>
-            </button>
         </nav>
 
         <!-- ====== 主内容区 ====== -->
@@ -66,65 +53,65 @@
             <div class="page page-home active" id="pageHome">
                 <!-- 快捷入口 -->
                 <div class="quick-entries">
-                    <div class="entry-item" data-action="publish">
-                        <div class="entry-icon" style="background:#FFF0E8">
-                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z" fill="#FF5000"/></svg>
-                        </div>
-                        <span>卖闲置</span>
-                    </div>
-                    <div class="entry-item" data-action="fishpond">
+                    <div class="entry-item" data-action="new">
                         <div class="entry-icon" style="background:#E8F5FF">
-                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#0080FF"/></svg>
+                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z" fill="#4A90D9"/></svg>
                         </div>
-                        <span>鱼塘</span>
+                        <span>新品上架</span>
                     </div>
-                    <div class="entry-item" data-action="recycle">
+                    <div class="entry-item" data-action="hot">
+                        <div class="entry-icon" style="background:#FFE8E8">
+                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M13.5.67s.74 2.67.03 4.57c-.58 1.61-1.86 2.63-1.86 2.63s1.93.58 3.36 2.15c1.43 1.57 1.65 3.6 1.65 3.6s2.18-1.63 2.18-4.5c0-2.86-1.93-4.75-1.93-4.75s.98-1.45.98-2.9c0-1.44-.98-2.9-.98-2.9s-1.1 1.1-1.1 2.9c0 1.8 1.1 2.9 1.1 2.9s-.98.8-.98 2.9c0 2.1.98 2.9.98 2.9s-.8-1.1-2.4-1.1c-1.6 0-2.4 1.1-2.4 1.1s.8-.8.8-2.9c0-2.1-.8-2.9-.8-2.9s1.1-1.1 1.1-2.9c0-1.8-1.1-2.9-1.1-2.9z" fill="#E74C3C"/></svg>
+                        </div>
+                        <span>热销爆款</span>
+                    </div>
+                    <div class="entry-item" data-action="discount">
                         <div class="entry-icon" style="background:#E8FFE8">
-                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="#00AA00"/></svg>
+                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z" fill="#27AE60"/></svg>
                         </div>
-                        <span>信用回收</span>
+                        <span>限时特惠</span>
                     </div>
-                    <div class="entry-item" data-action="free">
+                    <div class="entry-item" data-action="gift">
                         <div class="entry-icon" style="background:#FFF8E8">
-                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z" fill="#FF8C00"/></svg>
+                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z" fill="#F39C12"/></svg>
                         </div>
-                        <span>免费送</span>
+                        <span>礼品专区</span>
                     </div>
-                    <div class="entry-item" data-action="rent">
+                    <div class="entry-item" data-action="about">
                         <div class="entry-icon" style="background:#F0E8FF">
-                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7zm-9 .7c0-1.1.9-2 2-2s2 .9 2 2h-4z" fill="#7B3FFF"/></svg>
+                            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#9B59B6"/></svg>
                         </div>
-                        <span>租借</span>
+                        <span>关于小店</span>
                     </div>
                 </div>
 
                 <!-- 活动横幅 -->
                 <div class="banner-area">
                     <div class="banner-slider" id="bannerSlider">
-                        <div class="banner-item" style="background:linear-gradient(135deg,#FF6B35,#FF5000)">
+                        <div class="banner-item" style="background:linear-gradient(135deg,#4A90D9,#357ABD)">
                             <div class="banner-content">
                                 <div class="banner-text-group">
-                                    <span class="banner-tag">限时补贴</span>
-                                    <span class="banner-title">闲置好物 超值捡漏</span>
-                                    <span class="banner-sub">每满200减20</span>
+                                    <span class="banner-tag">新品上市</span>
+                                    <span class="banner-title">春季新品 精选好物</span>
+                                    <span class="banner-sub">全场包邮</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="banner-item" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+                        <div class="banner-item" style="background:linear-gradient(135deg,#E74C3C,#C0392B)">
                             <div class="banner-content">
                                 <div class="banner-text-group">
-                                    <span class="banner-tag">新人福利</span>
-                                    <span class="banner-title">首单包邮</span>
-                                    <span class="banner-sub">新人专享好礼</span>
+                                    <span class="banner-tag">限时特惠</span>
+                                    <span class="banner-title">爆款直降</span>
+                                    <span class="banner-sub">低至5折起</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="banner-item" style="background:linear-gradient(135deg,#f093fb,#f5576c)">
+                        <div class="banner-item" style="background:linear-gradient(135deg,#27AE60,#229954)">
                             <div class="banner-content">
                                 <div class="banner-text-group">
-                                    <span class="banner-tag">鱼塘精选</span>
-                                    <span class="banner-title">发现身边好物</span>
-                                    <span class="banner-sub">靠谱卖家推荐</span>
+                                    <span class="banner-tag">会员福利</span>
+                                    <span class="banner-title">积分换购</span>
+                                    <span class="banner-sub">更多惊喜等你发现</span>
                                 </div>
                             </div>
                         </div>
@@ -136,9 +123,9 @@
                     </div>
                 </div>
 
-                <!-- 猜你喜欢 -->
+                <!-- 精选商品 -->
                 <div class="section-header">
-                    <span class="section-title">猜你喜欢</span>
+                    <span class="section-title">精选商品</span>
                     <span class="section-more" id="refreshBtn">
                         <svg viewBox="0 0 24 24" width="14" height="14"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="#999"/></svg>
                         换一批
@@ -148,23 +135,23 @@
                 <div class="load-more" id="loadMore">上拉加载更多</div>
             </div>
 
-            <!-- ===== 鱼塘 ===== -->
-            <div class="page page-fishpond" id="pageFishpond">
-                <div class="fishpond-banner">
-                    <div class="fp-banner-text">
-                        <h3>加入鱼塘</h3>
-                        <p>发现志同道合的朋友</p>
+            <!-- ===== 分类页 ===== -->
+            <div class="page page-category" id="pageCategory">
+                <div class="category-banner">
+                    <div class="cat-banner-text">
+                        <h3>商品分类</h3>
+                        <p>精选好物，品质保证</p>
                     </div>
                 </div>
-                <div class="fp-grid" id="fishpondList"></div>
+                <div class="cat-grid" id="categoryList"></div>
             </div>
 
             <!-- ===== 消息页 ===== -->
             <div class="page page-messages" id="pageMessages">
                 <div class="msg-tabs">
                     <span class="msg-tab active" data-tab="all">全部</span>
-                    <span class="msg-tab" data-tab="buyer">买家</span>
-                    <span class="msg-tab" data-tab="seller">卖家</span>
+                    <span class="msg-tab" data-tab="order">订单</span>
+                    <span class="msg-tab" data-tab="service">客服</span>
                     <span class="msg-tab" data-tab="system">系统</span>
                 </div>
                 <div class="message-list" id="messageList"></div>
@@ -178,18 +165,18 @@
                             <svg viewBox="0 0 24 24" width="36" height="36"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#fff"/></svg>
                         </div>
                         <div class="profile-info">
-                            <div class="profile-name">咸鱼用户</div>
+                            <div class="profile-name">小雅</div>
                             <div class="profile-desc">
-                                <span class="credit-badge">信用极好</span>
+                                <span class="credit-badge">优质店主</span>
                             </div>
                         </div>
                         <button class="btn-edit-profile">编辑资料</button>
                     </div>
                     <div class="profile-stats">
-                        <div class="stat-item"><span class="stat-num">5</span><span class="stat-label">在售</span></div>
-                        <div class="stat-item"><span class="stat-num">12</span><span class="stat-label">已售</span></div>
-                        <div class="stat-item"><span class="stat-num">88</span><span class="stat-label">关注</span></div>
-                        <div class="stat-item"><span class="stat-num">650</span><span class="stat-label">鱼力值</span></div>
+                        <div class="stat-item"><span class="stat-num">128</span><span class="stat-label">商品</span></div>
+                        <div class="stat-item"><span class="stat-num">356</span><span class="stat-label">已售</span></div>
+                        <div class="stat-item"><span class="stat-num">89</span><span class="stat-label">粉丝</span></div>
+                        <div class="stat-item"><span class="stat-num">4.9</span><span class="stat-label">评分</span></div>
                     </div>
                 </div>
                 <div class="profile-orders">
@@ -198,18 +185,18 @@
                         <span class="order-more">全部订单 <svg viewBox="0 0 24 24" width="14" height="14"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></span>
                     </div>
                     <div class="order-icons">
-                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 14H6V6h12v12z" fill="#FF5000" opacity="0.3"/><path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="#FF5000"/></svg><span>待付款</span></div>
-                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" fill="#FF5000"/></svg><span>待发货</span></div>
-                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 12H4v-2h16v2zm0 4H4v-2h16v2z" fill="#FF5000"/><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z" fill="#FF5000" opacity="0.3"/></svg><span>待收货</span></div>
-                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#FF5000"/></svg><span>待评价</span></div>
-                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z" fill="#FF5000"/></svg><span>退款/售后</span></div>
+                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 14H6V6h12v12z" fill="#4A90D9" opacity="0.3"/><path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="#4A90D9"/></svg><span>待付款</span></div>
+                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" fill="#4A90D9"/></svg><span>待发货</span></div>
+                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 12H4v-2h16v2zm0 4H4v-2h16v2z" fill="#4A90D9"/><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z" fill="#4A90D9" opacity="0.3"/></svg><span>待收货</span></div>
+                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#4A90D9"/></svg><span>待评价</span></div>
+                        <div class="order-icon-item"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z" fill="#4A90D9"/></svg><span>退款/售后</span></div>
                     </div>
                 </div>
                 <div class="profile-menu">
-                    <div class="menu-item" data-action="publish"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="#666"/></svg><span>我发布的</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
-                    <div class="menu-item" data-action="sold"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" fill="#666"/></svg><span>我卖出的</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
-                    <div class="menu-item" data-action="bought"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.17 14.75l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4l-3.87 7H8.53L4.27 2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25z" fill="#666"/></svg><span>我买到的</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
-                    <div class="menu-item" data-action="fav"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#666"/></svg><span>我收藏的</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
+                    <div class="menu-item" data-action="myproducts"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="#666"/></svg><span>我的商品</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
+                    <div class="menu-item" data-action="sold"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" fill="#666"/></svg><span>销售记录</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
+                    <div class="menu-item" data-action="bought"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.17 14.75l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4l-3.87 7H8.53L4.27 2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25z" fill="#666"/></svg><span>购买记录</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
+                    <div class="menu-item" data-action="fav"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#666"/></svg><span>我的收藏</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
                     <div class="menu-item" data-action="history"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" fill="#666"/></svg><span>浏览记录</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
                     <div class="menu-item" data-action="settings"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" fill="#666"/></svg><span>设置</span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#ccc"/></svg></div>
                 </div>
@@ -218,31 +205,31 @@
             <!-- ===== 发布页 ===== -->
             <div class="page page-publish" id="pagePublish">
                 <div class="publish-form">
-                    <h3>发布闲置</h3>
+                    <h3>上架商品</h3>
                     <div class="upload-area" id="uploadArea">
                         <svg viewBox="0 0 24 24" width="40" height="40"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" fill="#ccc"/></svg>
-                        <span>上传宝贝图片</span>
+                        <span>上传商品图片</span>
                         <span class="upload-hint">添加高清图片，最多9张</span>
                     </div>
-                    <input type="text" class="form-input" placeholder="宝贝标题 品牌型号等（必填）">
-                    <textarea class="form-textarea" placeholder="描述一下宝贝的成色、使用感受、转手原因等..."></textarea>
+                    <input type="text" class="form-input" placeholder="商品标题（必填）">
+                    <textarea class="form-textarea" placeholder="商品描述：材质、尺寸、用途等..."></textarea>
                     <div class="form-row">
                         <input type="text" class="form-input" placeholder="价格（必填）">
                         <span class="form-unit">元</span>
                     </div>
                     <div class="form-row">
-                        <input type="text" class="form-input" placeholder="原价（选填）">
-                        <span class="form-unit">元</span>
+                        <input type="text" class="form-input" placeholder="库存数量">
+                        <span class="form-unit">件</span>
                     </div>
                     <div class="form-row">
                         <select class="form-select">
-                            <option>全新</option><option>几乎全新</option><option>轻微使用</option><option>明显使用</option>
+                            <option>服饰</option><option>美妆</option><option>家居</option><option>数码</option><option>食品</option><option>礼品</option>
                         </select>
                         <select class="form-select">
-                            <option>包邮</option><option>自提</option><option>按距离估算</option>
+                            <option>包邮</option><option>自提</option>
                         </select>
                     </div>
-                    <button class="btn-publish">发布</button>
+                    <button class="btn-publish">上架</button>
                 </div>
             </div>
         </main>
@@ -301,15 +288,15 @@
                 <svg viewBox="0 0 24 24" width="24" height="24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/></svg>
                 <span>首页</span>
             </div>
-            <div class="nav-item" data-page="fishpond">
-                <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
-                <span>鱼塘</span>
+            <div class="nav-item" data-page="category">
+                <svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h2v-2H7v2zm0-4h2V7H7v2zm0-2h2V3H7v2zm4 8h2v-2h-2v2zm0-4h2v-2h-2v2zm0-4h2V7h-2v2zm0-2h2V3h-2v2zm4 12h2v-2h-2v2zm0-4h2v-2h-2v2zm0-4h2V7h-2v2zm0-2h2V3h-2v2zm4 12h2v-2h-2v2zm0-4h2v-2h-2v2zm0-4h2V7h-2v2zm0-2h2V3h-2v2z" fill="currentColor"/></svg>
+                <span>分类</span>
             </div>
             <div class="nav-item nav-publish" data-page="publish">
                 <div class="publish-btn">
                     <svg viewBox="0 0 24 24" width="28" height="28"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#fff"/></svg>
                 </div>
-                <span>卖闲置</span>
+                <span>上架</span>
             </div>
             <div class="nav-item" data-page="messages">
                 <svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z" fill="currentColor"/></svg>
