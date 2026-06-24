@@ -1,8 +1,9 @@
-/* ===== 闲鱼 1:1 翻版 - CSS ===== */
+/* ===== 小雅精品店 - 个人商店 CSS ===== */
 
 :root {
-    --primary: #FF5000;
-    --primary-light: #FFF1EB;
+    --primary: #4A90D9;
+    --primary-light: #E8F5FF;
+    --primary-dark: #357ABD;
     --bg: #f5f5f5;
     --white: #fff;
     --text: #333;
@@ -52,10 +53,8 @@ a { text-decoration: none; color: inherit; }
     background: var(--white); display: flex; align-items: center;
     padding: 0 12px; z-index: 100; gap: 10px;
 }
-.header-left { display: flex; align-items: center; flex-shrink: 0; }
-.location-picker { display: flex; align-items: center; gap: 2px; cursor: pointer; }
-.location-text { font-size: 15px; font-weight: 600; color: var(--text); }
-.icon-arrow { margin-top: 1px; }
+.shop-logo { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.shop-name { font-size: 16px; font-weight: 700; color: var(--primary); }
 
 .search-bar {
     flex: 1; display: flex; align-items: center;
@@ -245,7 +244,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===== Profile ===== */
-.profile-header { background: linear-gradient(135deg, #FF6B35, #FF5000); padding: 20px 16px 16px; }
+.profile-header { background: linear-gradient(135deg, #4A90D9, #357ABD); padding: 20px 16px 16px; }
 .profile-top { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
 .profile-avatar {
     width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.25);
@@ -319,7 +318,7 @@ a { text-decoration: none; color: inherit; }
     border-radius: 8px; font-size: 14px; color: var(--text);
 }
 .btn-publish {
-    width: 100%; padding: 13px; background: linear-gradient(135deg, #FF6B35, #FF5000);
+    width: 100%; padding: 13px; background: linear-gradient(135deg, #4A90D9, #357ABD);
     color: #fff; font-size: 16px; font-weight: 600; border-radius: 22px;
     margin-top: 6px; cursor: pointer;
 }
@@ -339,9 +338,9 @@ a { text-decoration: none; color: inherit; }
 }
 .nav-item.active { color: var(--primary); }
 .nav-publish .publish-btn {
-    width: 48px; height: 48px; background: linear-gradient(135deg, #FF6B35, #FF5000);
+    width: 48px; height: 48px; background: linear-gradient(135deg, #4A90D9, #357ABD);
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    margin-top: -14px; box-shadow: 0 2px 10px rgba(255,80,0,0.35);
+    margin-top: -14px; box-shadow: 0 2px 10px rgba(74,144,217,0.35);
 }
 .nav-publish span { margin-top: 2px; }
 .nav-badge {
@@ -407,7 +406,7 @@ a { text-decoration: none; color: inherit; }
     border-radius: 22px; font-size: 15px; font-weight: 600; text-align: center;
 }
 .btn-want {
-    flex: 2; padding: 12px; background: linear-gradient(135deg, #FF6B35, #FF5000);
+    flex: 2; padding: 12px; background: linear-gradient(135deg, #4A90D9, #357ABD);
     color: #fff; border-radius: 22px; font-size: 15px; font-weight: 600; text-align: center;
 }
 
