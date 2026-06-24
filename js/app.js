@@ -1,4 +1,4 @@
-// ===== 闲鱼 1:1 翻版 - 主应用逻辑 =====
+// ===== 小雅精品店 - 主应用逻辑 =====
 
 (function() {
     'use strict';
@@ -9,46 +9,44 @@
 
     // ===== 模拟商品数据 =====
     const mockProducts = [
-        { id: 1, title: 'Apple iPhone 15 Pro Max 256GB 原色钛金属 几乎全新', price: 6999, originalPrice: 9999, location: '杭州', wantCount: 128, image: 'https://picsum.photos/seed/iphone/400/500', tag: '急售', category: 'digital', seller: '数码达人小王', sellerAvatar: '#FF6B6B', sellerCredit: '信用极好', sellerSold: 86, desc: '去年12月购入，一直带壳贴膜使用，无任何划痕磕碰。电池健康度98%，配件齐全带原装盒子。因换了新手机故出。' },
-        { id: 2, title: 'MacBook Pro 14寸 M3 Pro芯片 18GB/512GB', price: 12500, originalPrice: 16999, location: '北京', wantCount: 89, image: 'https://picsum.photos/seed/macbook/400/400', tag: '', category: 'digital', seller: '科技宅小李', sellerAvatar: '#4ECDC4', sellerCredit: '信用极好', sellerSold: 124, desc: '2024年3月购入，主要用于办公和轻度剪辑，循环次数仅50次。屏幕完美，键盘无油光，配件齐全。' },
-        { id: 3, title: 'Nike Air Jordan 1 芝加哥配色 43码 只穿过一次', price: 899, originalPrice: 1499, location: '上海', wantCount: 56, image: 'https://picsum.photos/seed/shoes/400/550', tag: '', category: 'clothes', seller: '潮鞋收藏家', sellerAvatar: '#FF8C00', sellerCredit: '信用良好', sellerSold: 32, desc: '正品购入，仅穿一次出门，几乎全新。鞋底无磨损，鞋面无折痕。43码偏小，建议42.5脚穿。' },
-        { id: 4, title: '戴森V15吸尘器 全新未拆封', price: 3299, originalPrice: 4990, location: '深圳', wantCount: 203, image: 'https://picsum.photos/seed/dyson/400/450', tag: '全新', category: 'home', seller: '居家好物推荐', sellerAvatar: '#45B7D1', sellerCredit: '信用极好', sellerSold: 567, desc: '年会奖品，全新未拆封。戴森V15 Detect Absolute，带激光探测，官网可查序列号。' },
-        { id: 5, title: 'SK-II神仙水230ml 专柜正品', price: 680, originalPrice: 1370, location: '广州', wantCount: 312, image: 'https://picsum.photos/seed/skii/400/420', tag: '', category: 'beauty', seller: '美妆代购小美', sellerAvatar: '#F06292', sellerCredit: '信用极好', sellerSold: 1023, desc: '朋友日本带回，囤货太多用不完。230ml大瓶装，塑封完好，保质期到2026年。' },
-        { id: 6, title: '索尼PS5游戏机 光驱版 带两个手柄', price: 2800, originalPrice: 3899, location: '成都', wantCount: 167, image: 'https://picsum.photos/seed/ps5/400/480', tag: '热门', category: 'digital', seller: '游戏老玩家', sellerAvatar: '#6C5CE7', sellerCredit: '信用极好', sellerSold: 45, desc: '买来玩了大半年，现在工作忙没时间玩了。光驱版带两个原装手柄，送三张实体游戏盘。' },
-        { id: 7, title: '乐高兰博基尼42115 机械组 拼过一次', price: 1599, originalPrice: 2999, location: '杭州', wantCount: 45, image: 'https://picsum.photos/seed/lego/400/460', tag: '', category: 'toy', seller: '乐高爱好者', sellerAvatar: '#F9CA24', sellerCredit: '信用良好', sellerSold: 18, desc: '拼过一次就拆了放回盒子里了，零件齐全无缺失。说明书和外盒都在，适合收藏或送礼。' },
-        { id: 8, title: '大疆DJI Mini 4 Pro 畅飞套装 带随心换', price: 5200, originalPrice: 6988, location: '武汉', wantCount: 98, image: 'https://picsum.photos/seed/drone/400/440', tag: '95新', category: 'digital', seller: '航拍爱好者', sellerAvatar: '#00B894', sellerCredit: '信用极好', sellerSold: 23, desc: '仅飞过3次，成色95新。畅飞套装含三块电池、充电管家、ND滤镜，随心换到2025年底。' },
-        { id: 9, title: '始祖鸟Beta AR冲锋衣 男款L码 黑色', price: 3200, originalPrice: 5400, location: '南京', wantCount: 76, image: 'https://picsum.photos/seed/jacket/400/500', tag: '', category: 'clothes', seller: '户外装备党', sellerAvatar: '#2D3436', sellerCredit: '信用极好', sellerSold: 67, desc: '专柜正品购入，穿着不超过5次。Gore-Tex Pro面料，防水透气性能完好。L码185左右合适。' },
-        { id: 10, title: 'Switch OLED王国之泪限定版 带游戏', price: 1800, originalPrice: 2599, location: '重庆', wantCount: 234, image: 'https://picsum.photos/seed/switch/400/430', tag: '包邮', category: 'digital', seller: '塞尔达铁粉', sellerAvatar: '#E17055', sellerCredit: '信用良好', sellerSold: 12, desc: '限定版Switch OLED，箱说全。带王国之泪卡带和Pro手柄，屏幕贴了钢化膜，无划痕。' },
-        { id: 11, title: '婴儿推车 好孩子GB 轻便折叠 9成新', price: 399, originalPrice: 899, location: '杭州', wantCount: 34, image: 'https://picsum.photos/seed/stroller/400/470', tag: '', category: 'baby', seller: '宝妈闲置转让', sellerAvatar: '#FD79A8', sellerCredit: '信用极好', sellerSold: 89, desc: '宝宝大了用不上了，9成新，使用不到半年。一键折叠，可上飞机，带遮阳篷和雨罩。' },
-        { id: 12, title: '《三体》全套三册 刘慈欣 精装版', price: 68, originalPrice: 158, location: '上海', wantCount: 189, image: 'https://picsum.photos/seed/book/400/510', tag: '', category: 'book', seller: '书虫的书架', sellerAvatar: '#A29BFE', sellerCredit: '信用极好', sellerSold: 456, desc: '精装硬壳版，只看过一遍，基本全新。三体1-3全集，书角无折痕，内页无笔记。' },
-        { id: 13, title: '雅诗兰黛小棕瓶精华 100ml 全新', price: 520, originalPrice: 935, location: '北京', wantCount: 156, image: 'https://picsum.photos/seed/cream/400/390', tag: '', category: 'beauty', seller: '海淘小能手', sellerAvatar: '#D980FA', sellerCredit: '信用极好', sellerSold: 234, desc: '美国官网海淘购入，全新未开封。第七代小棕瓶，100ml大容量，保质期到2027年。' },
-        { id: 14, title: '小米电动滑板车Pro 续航45km', price: 1599, originalPrice: 2799, location: '深圳', wantCount: 67, image: 'https://picsum.photos/seed/scooter/400/490', tag: '自提', category: 'sports', seller: '通勤一族', sellerAvatar: '#0984E3', sellerCredit: '信用良好', sellerSold: 8, desc: '公司搬家后不需要了，用了半年。续航实测40km+，最高时速25km/h，配件齐全。限深圳自提。' },
-        { id: 15, title: '任天堂 amiibo 塞尔达传说 全套8款', price: 450, originalPrice: 800, location: '广州', wantCount: 41, image: 'https://picsum.photos/seed/amiibo/400/410', tag: '', category: 'toy', seller: 'Switch收藏家', sellerAvatar: '#E17055', sellerCredit: '信用极好', sellerSold: 156, desc: '全套8款塞尔达amiibo，仅拆封未使用。适合收藏，附赠收纳盒。不单出，打包一起出。' },
-        { id: 16, title: '加拿大鹅羽绒服 Expedition派克大衣', price: 5800, originalPrice: 9900, location: '成都', wantCount: 112, image: 'https://picsum.photos/seed/goose/400/520', tag: '正品', category: 'clothes', seller: '奢侈品闲置', sellerAvatar: '#636E72', sellerCredit: '信用极好', sellerSold: 234, desc: '加拿大专柜购入，正品可验。只穿了一个冬天，保暖效果极好。送干洗店清洗过，成色很好。M码，适合175-185。' }
+        { id: 1, title: '日式简约陶瓷茶杯套装 手工制作', price: 89, originalPrice: 128, location: '杭州', wantCount: 256, image: 'https://picsum.photos/seed/cup/400/400', tag: '新品', category: 'home', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '手工制作的日式简约陶瓷茶杯，一套4个，适合居家使用或送礼。釉面光滑，手感舒适。' },
+        { id: 2, title: '纯棉休闲连衣裙 春季新款', price: 168, originalPrice: 268, location: '杭州', wantCount: 189, image: 'https://picsum.photos/seed/dress/400/500', tag: '热销', category: 'clothes', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '100%纯棉面料，舒适透气。春季新款，简约百搭款式，适合日常穿着。' },
+        { id: 3, title: '天然精油香薰蜡烛 礼盒装', price: 78, originalPrice: 98, location: '杭州', wantCount: 345, image: 'https://picsum.photos/seed/candle/400/420', tag: '', category: 'home', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '天然植物精油香薰蜡烛，礼盒装含3支不同香型。适合居家氛围营造或送礼。' },
+        { id: 4, title: '韩国进口保湿精华液 100ml', price: 128, originalPrice: 198, location: '杭州', wantCount: 567, image: 'https://picsum.photos/seed/skincare/400/450', tag: '热销', category: 'beauty', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '韩国进口保湿精华液，深层补水，适合各种肤质。100ml大容量，性价比高。' },
+        { id: 5, title: '复古风格帆布包 大容量', price: 59, originalPrice: 89, location: '杭州', wantCount: 234, image: 'https://picsum.photos/seed/bag/400/480', tag: '', category: 'clothes', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '复古风格帆布包，大容量设计，可装笔记本电脑。结实耐用，适合通勤或旅行。' },
+        { id: 6, title: '智能蓝牙音箱 迷你便携', price: 99, originalPrice: 159, location: '杭州', wantCount: 178, image: 'https://picsum.photos/seed/speaker/400/440', tag: '新品', category: 'digital', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '智能蓝牙音箱，迷你便携设计，音质清晰。支持多设备连接，续航时间长。' },
+        { id: 7, title: '手工编织羊毛围巾 冬季保暖', price: 198, originalPrice: 298, location: '杭州', wantCount: 89, image: 'https://picsum.photos/seed/scarf/400/500', tag: '', category: 'clothes', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '手工编织羊毛围巾，柔软保暖，冬季必备。多色可选，适合送礼。' },
+        { id: 8, title: '进口巧克力礼盒 12支装', price: 68, originalPrice: 88, location: '杭州', wantCount: 456, image: 'https://picsum.photos/seed/chocolate/400/400', tag: '热销', category: 'food', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '进口巧克力礼盒，12支装，多口味组合。适合送礼或自用，口感细腻。' },
+        { id: 9, title: '创意桌面收纳盒 多层设计', price: 45, originalPrice: 68, location: '杭州', wantCount: 123, image: 'https://picsum.photos/seed/storage/400/460', tag: '', category: 'home', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '创意桌面收纳盒，多层设计，可收纳文具、化妆品等。简约美观，实用性强。' },
+        { id: 10, title: '精美礼品套装 生日送礼', price: 158, originalPrice: 218, location: '杭州', wantCount: 345, image: 'https://picsum.photos/seed/gift/400/430', tag: '推荐', category: 'gift', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '精美礼品套装，包含香薰蜡烛、手工香皂等。适合生日送礼，包装精美。' },
+        { id: 11, title: '天然手工香皂套装 4块装', price: 38, originalPrice: 58, location: '杭州', wantCount: 234, image: 'https://picsum.photos/seed/soap/400/470', tag: '', category: 'beauty', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '天然手工香皂套装，4块装，不同香型。温和不刺激，适合敏感肌肤。' },
+        { id: 12, title: '便携式充电宝 10000mAh', price: 79, originalPrice: 129, location: '杭州', wantCount: 567, image: 'https://picsum.photos/seed/charger/400/510', tag: '热销', category: 'digital', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '便携式充电宝，10000mAh大容量，支持快充。小巧轻便，适合旅行携带。' },
+        { id: 13, title: '进口咖啡豆 250g 精选', price: 58, originalPrice: 78, location: '杭州', wantCount: 189, image: 'https://picsum.photos/seed/coffee/400/390', tag: '', category: 'food', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '进口咖啡豆，250g精选包装。口感醇厚，适合咖啡爱好者。' },
+        { id: 14, title: '简约风格手表 石英机芯', price: 198, originalPrice: 298, location: '杭州', wantCount: 123, image: 'https://picsum.photos/seed/watch/400/490', tag: '新品', category: 'digital', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '简约风格手表，石英机芯，精准耐用。适合日常佩戴，百搭款式。' },
+        { id: 15, title: '精美首饰盒 皮革材质', price: 68, originalPrice: 98, location: '杭州', wantCount: 234, image: 'https://picsum.photos/seed/jewelrybox/400/410', tag: '', category: 'gift', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '精美首饰盒，皮革材质，多层设计。适合收纳首饰或送礼。' },
+        { id: 16, title: '日式风格茶具套装 陶瓷', price: 128, originalPrice: 168, location: '杭州', wantCount: 345, image: 'https://picsum.photos/seed/teaset/400/520', tag: '推荐', category: 'home', seller: '小雅精品店', sellerAvatar: '#4A90D9', sellerCredit: '优质店主', sellerSold: 356, desc: '日式风格茶具套装，陶瓷材质，含茶壶和4个茶杯。适合居家使用或送礼。' }
     ];
 
     // ===== 模拟消息数据 =====
     const mockMessages = [
-        { id: 1, name: '数码达人小王', avatar: '#FF6B6B', preview: '好的，价格可以商量，你方便...', time: '刚刚', unread: 2, type: 'seller' },
-        { id: 2, name: '科技宅小李', avatar: '#4ECDC4', preview: 'MacBook还在吗？', time: '5分钟前', unread: 0, type: 'buyer' },
-        { id: 3, name: '闲鱼小助手', avatar: '#FF5000', preview: '您的宝贝"iPhone 15 Pro"获得...', time: '1小时前', unread: 1, type: 'system' },
-        { id: 4, name: '潮鞋收藏家', avatar: '#FF8C00', preview: '43码我穿可能有点大...', time: '2小时前', unread: 0, type: 'buyer' },
-        { id: 5, name: '居家好物推荐', avatar: '#45B7D1', preview: '已发货，请注意查收', time: '昨天', unread: 0, type: 'seller' },
-        { id: 6, name: '游戏老玩家', avatar: '#6C5CE7', preview: 'PS5我已经拍下了', time: '昨天', unread: 0, type: 'buyer' },
-        { id: 7, name: '系统通知', avatar: '#999', preview: '您的账号安全等级已提升', time: '3天前', unread: 0, type: 'system' },
-        { id: 8, name: '美妆代购小美', avatar: '#F06292', preview: '神仙水还有吗？我想要', time: '3天前', unread: 0, type: 'buyer' }
+        { id: 1, name: '顾客小李', avatar: '#FF6B6B', preview: '请问这个商品还有货吗？', time: '刚刚', unread: 2, type: 'order' },
+        { id: 2, name: '顾客小王', avatar: '#4ECDC4', preview: '已下单，什么时候发货？', time: '5分钟前', unread: 0, type: 'order' },
+        { id: 3, name: '客服助手', avatar: '#4A90D9', preview: '您的订单已发货...', time: '1小时前', unread: 1, type: 'system' },
+        { id: 4, name: '顾客小张', avatar: '#FF8C00', preview: '收到货了，质量很好！', time: '2小时前', unread: 0, type: 'order' },
+        { id: 5, name: '售后客服', avatar: '#45B7D1', preview: '退款申请已处理', time: '昨天', unread: 0, type: 'service' },
+        { id: 6, name: '顾客小陈', avatar: '#6C5CE7', preview: '可以优惠一点吗？', time: '昨天', unread: 0, type: 'order' },
+        { id: 7, name: '系统通知', avatar: '#999', preview: '您的店铺评分已更新', time: '3天前', unread: 0, type: 'system' },
+        { id: 8, name: '顾客小美', avatar: '#F06292', preview: '推荐一下新品', time: '3天前', unread: 0, type: 'order' }
     ];
 
-    // ===== 模拟鱼塘数据 =====
-    const mockFishponds = [
-        { id: 1, icon: '📱', title: '数码爱好者', desc: '12.6万人', color: '#E8F5FF' },
-        { id: 2, icon: '👟', title: '潮鞋交流圈', desc: '8.3万人', color: '#FFF0E8' },
-        { id: 3, icon: '💄', title: '美妆闲置交换', desc: '15.2万人', color: '#FFE8F0' },
-        { id: 4, icon: '🎮', title: '主机游戏玩家', desc: '9.7万人', color: '#F0E8FF' },
-        { id: 5, icon: '🏠', title: '家居好物分享', desc: '6.8万人', color: '#E8FFE8' },
-        { id: 6, icon: '👶', title: '宝妈闲置群', desc: '11.4万人', color: '#FFF8E8' },
-        { id: 7, icon: '📚', title: '二手书交易', desc: '5.2万人', color: '#FFE8E8' },
-        { id: 8, icon: '🏃', title: '运动装备', desc: '7.1万人', color: '#E8F0FF' }
+    // ===== 模拟分类数据 =====
+    const mockCategories = [
+        { id: 1, icon: '👗', title: '服饰', desc: '精选服饰', color: '#FFE8F0' },
+        { id: 2, icon: '💄', title: '美妆', desc: '护肤美妆', color: '#E8F5FF' },
+        { id: 3, icon: '🏠', title: '家居', desc: '居家好物', color: '#E8FFE8' },
+        { id: 4, icon: '📱', title: '数码', desc: '数码配件', color: '#F0E8FF' },
+        { id: 5, icon: '🍫', title: '食品', desc: '美味食品', color: '#FFF8E8' },
+        { id: 6, icon: '🎁', title: '礼品', desc: '精美礼品', color: '#FFE8E8' }
     ];
 
     // ===== 状态管理 =====
@@ -292,22 +290,26 @@
         });
     }
 
-    // ===== 渲染鱼塘列表 =====
-    function renderFishponds() {
-        const grid = $('#fishpondList');
+    // ===== 渲染分类列表 =====
+    function renderCategories() {
+        const grid = $('#categoryList');
         if (!grid) return;
         
-        grid.innerHTML = mockFishponds.map(fp => `
+        grid.innerHTML = mockCategories.map(cat => `
             <div class="fp-card">
-                <div class="fp-card-icon">${fp.icon}</div>
-                <div class="fp-card-title">${fp.title}</div>
-                <div class="fp-card-desc">${fp.desc}</div>
+                <div class="fp-card-icon">${cat.icon}</div>
+                <div class="fp-card-title">${cat.title}</div>
+                <div class="fp-card-desc">${cat.desc}</div>
             </div>
         `).join('');
 
         grid.querySelectorAll('.fp-card').forEach((card, i) => {
             card.addEventListener('click', () => {
-                showToast(`正在进入${mockFishponds[i].title}...`);
+                const category = mockCategories[i].title;
+                switchPage('home');
+                setTimeout(() => {
+                    switchCategory(mockCategories[i].title.toLowerCase());
+                }, 300);
             });
         });
     }
@@ -323,7 +325,7 @@
             'messages': 'pageMessages',
             'profile': 'pageProfile',
             'publish': 'pagePublish',
-            'fishpond': 'pageFishpond'
+            'category': 'pageCategory'
         };
 
         const pageId = pageMap[page] || 'pageHome';
@@ -338,7 +340,7 @@
 
         if (page === 'home') renderProducts(state.currentCategory);
         if (page === 'messages') renderMessages();
-        if (page === 'fishpond') renderFishponds();
+        if (page === 'category') renderCategories();
     }
 
     // ===== 事件绑定 =====
@@ -519,9 +521,19 @@
         $$('.entry-item').forEach(item => {
             item.addEventListener('click', () => {
                 const action = item.dataset.action;
-                if (action === 'publish') switchPage('publish');
-                else if (action === 'fishpond') switchPage('fishpond');
-                else showToast('功能开发中...');
+                if (action === 'new') {
+                    showToast('新品上架功能开发中...');
+                } else if (action === 'hot') {
+                    showToast('热销爆款功能开发中...');
+                } else if (action === 'discount') {
+                    showToast('限时特惠功能开发中...');
+                } else if (action === 'gift') {
+                    switchCategory('gift');
+                } else if (action === 'about') {
+                    showToast('小雅精品店 - 专注精选好物');
+                } else {
+                    showToast('功能开发中...');
+                }
             });
         });
 
