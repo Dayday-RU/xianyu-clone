@@ -1,57 +1,57 @@
-// ===== 闂查奔 1:1 缈荤増 - 涓诲簲鐢ㄩ€昏緫 =====
+// ===== 闲鱼 1:1 翻版 - 主应用逻辑 =====
 
 (function() {
     'use strict';
 
-    // ===== DOM 蹇嵎鏂规硶 =====
+    // ===== DOM 快捷方法 =====
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => document.querySelectorAll(sel);
 
-    // ===== 妯℃嫙鍟嗗搧鏁版嵁 =====
+    // ===== 模拟商品数据 =====
     const mockProducts = [
-        { id: 1, title: 'Apple iPhone 15 Pro Max 256GB 鍘熻壊閽涢噾灞?鍑犱箮鍏ㄦ柊', price: 6999, originalPrice: 9999, location: '鏉窞', wantCount: 128, image: 'https://picsum.photos/seed/iphone/400/500', tag: '鎬ュ敭', category: 'digital', seller: '鏁扮爜杈句汉灏忕帇', sellerAvatar: '#FF6B6B', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 86, desc: '鍘诲勾12鏈堣喘鍏ワ紝涓€鐩村甫澹宠创鑶滀娇鐢紝鏃犱换浣曞垝鐥曠纰般€傜數姹犲仴搴峰害98%锛岄厤浠堕綈鍏ㄥ甫鍘熻鐩掑瓙銆傚洜鎹簡鏂版墜鏈烘晠鍑恒€? },
-        { id: 2, title: 'MacBook Pro 14瀵?M3 Pro鑺墖 18GB/512GB', price: 12500, originalPrice: 16999, location: '鍖椾含', wantCount: 89, image: 'https://picsum.photos/seed/macbook/400/400', tag: '', category: 'digital', seller: '绉戞妧瀹呭皬鏉?, sellerAvatar: '#4ECDC4', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 124, desc: '2024骞?鏈堣喘鍏ワ紝涓昏鐢ㄤ簬鍔炲叕鍜岃交搴﹀壀杈戯紝寰幆娆℃暟浠?0娆°€傚睆骞曞畬缇庯紝閿洏鏃犳补鍏夛紝閰嶄欢榻愬叏銆? },
-        { id: 3, title: 'Nike Air Jordan 1 鑺濆姞鍝ラ厤鑹?43鐮?鍙┛杩囦竴娆?, price: 899, originalPrice: 1499, location: '涓婃捣', wantCount: 56, image: 'https://picsum.photos/seed/shoes/400/550', tag: '', category: 'clothes', seller: '娼瀷鏀惰棌瀹?, sellerAvatar: '#FF8C00', sellerCredit: '淇＄敤鑹ソ', sellerSold: 32, desc: '姝ｅ搧璐叆锛屼粎绌夸竴娆″嚭闂紝鍑犱箮鍏ㄦ柊銆傞瀷搴曟棤纾ㄦ崯锛岄瀷闈㈡棤鎶樼棔銆?3鐮佸亸灏忥紝寤鸿42.5鑴氱┛銆? },
-        { id: 4, title: '鎴存．V15鍚稿皹鍣?鍏ㄦ柊鏈媶灏?, price: 3299, originalPrice: 4990, location: '娣卞湷', wantCount: 203, image: 'https://picsum.photos/seed/dyson/400/450', tag: '鍏ㄦ柊', category: 'home', seller: '灞呭濂界墿鎺ㄨ崘', sellerAvatar: '#45B7D1', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 567, desc: '骞翠細濂栧搧锛屽叏鏂版湭鎷嗗皝銆傛埓妫甐15 Detect Absolute锛屽甫婵€鍏夋帰娴嬶紝瀹樼綉鍙煡搴忓垪鍙枫€? },
-        { id: 5, title: 'SK-II绁炰粰姘?30ml 涓撴煖姝ｅ搧', price: 680, originalPrice: 1370, location: '骞垮窞', wantCount: 312, image: 'https://picsum.photos/seed/skii/400/420', tag: '', category: 'beauty', seller: '缇庡浠ｈ喘灏忕編', sellerAvatar: '#F06292', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 1023, desc: '鏈嬪弸鏃ユ湰甯﹀洖锛屽洡璐уお澶氱敤涓嶅畬銆?30ml澶х摱瑁咃紝濉戝皝瀹屽ソ锛屼繚璐ㄦ湡鍒?026骞淬€? },
-        { id: 6, title: '绱㈠凹PS5娓告垙鏈?鍏夐┍鐗?甯︿袱涓墜鏌?, price: 2800, originalPrice: 3899, location: '鎴愰兘', wantCount: 167, image: 'https://picsum.photos/seed/ps5/400/480', tag: '鐑棬', category: 'digital', seller: '娓告垙鑰佺帺瀹?, sellerAvatar: '#6C5CE7', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 45, desc: '涔版潵鐜╀簡澶у崐骞达紝鐜板湪宸ヤ綔蹇欐病鏃堕棿鐜╀簡銆傚厜椹辩増甯︿袱涓師瑁呮墜鏌勶紝閫佷笁寮犲疄浣撴父鎴忕洏銆? },
-        { id: 7, title: '涔愰珮鍏板崥鍩哄凹42115 鏈烘缁?鎷艰繃涓€娆?, price: 1599, originalPrice: 2999, location: '鏉窞', wantCount: 45, image: 'https://picsum.photos/seed/lego/400/460', tag: '', category: 'toy', seller: '涔愰珮鐖卞ソ鑰?, sellerAvatar: '#F9CA24', sellerCredit: '淇＄敤鑹ソ', sellerSold: 18, desc: '鎷艰繃涓€娆″氨鎷嗕簡鏀惧洖鐩掑瓙閲屼簡锛岄浂浠堕綈鍏ㄦ棤缂哄け銆傝鏄庝功鍜屽鐩掗兘鍦紝閫傚悎鏀惰棌鎴栭€佺ぜ銆? },
-        { id: 8, title: '澶х枂DJI Mini 4 Pro 鐣呴濂楄 甯﹂殢蹇冩崲', price: 5200, originalPrice: 6988, location: '姝︽眽', wantCount: 98, image: 'https://picsum.photos/seed/drone/400/440', tag: '95鏂?, category: 'digital', seller: '鑸媿鐖卞ソ鑰?, sellerAvatar: '#00B894', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 23, desc: '浠呴杩?娆★紝鎴愯壊95鏂般€傜晠椋炲瑁呭惈涓夊潡鐢垫睜銆佸厖鐢电瀹躲€丯D婊ら暅锛岄殢蹇冩崲鍒?025骞村簳銆? },
-        { id: 9, title: '濮嬬楦烞eta AR鍐查攱琛?鐢锋L鐮?榛戣壊', price: 3200, originalPrice: 5400, location: '鍗椾含', wantCount: 76, image: 'https://picsum.photos/seed/jacket/400/500', tag: '', category: 'clothes', seller: '鎴峰瑁呭鍏?, sellerAvatar: '#2D3436', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 67, desc: '涓撴煖姝ｅ搧璐叆锛岀┛鐫€涓嶈秴杩?娆°€侴ore-Tex Pro闈㈡枡锛岄槻姘撮€忔皵鎬ц兘瀹屽ソ銆侺鐮?85宸﹀彸鍚堥€傘€? },
-        { id: 10, title: 'Switch OLED鐜嬪浗涔嬫唱闄愬畾鐗?甯︽父鎴?, price: 1800, originalPrice: 2599, location: '閲嶅簡', wantCount: 234, image: 'https://picsum.photos/seed/switch/400/430', tag: '鍖呴偖', category: 'digital', seller: '濉炲皵杈鹃搧绮?, sellerAvatar: '#E17055', sellerCredit: '淇＄敤鑹ソ', sellerSold: 12, desc: '闄愬畾鐗圫witch OLED锛岀璇村叏銆傚甫鐜嬪浗涔嬫唱鍗″甫鍜孭ro鎵嬫焺锛屽睆骞曡创浜嗛挗鍖栬啘锛屾棤鍒掔棔銆? },
-        { id: 11, title: '濠村効鎺ㄨ溅 濂藉瀛怗B 杞讳究鎶樺彔 9鎴愭柊', price: 399, originalPrice: 899, location: '鏉窞', wantCount: 34, image: 'https://picsum.photos/seed/stroller/400/470', tag: '', category: 'baby', seller: '瀹濆闂茬疆杞', sellerAvatar: '#FD79A8', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 89, desc: '瀹濆疂澶т簡鐢ㄤ笉涓婁簡锛?鎴愭柊锛屼娇鐢ㄤ笉鍒板崐骞淬€備竴閿姌鍙狅紝鍙笂椋炴満锛屽甫閬槼绡峰拰闆ㄧ僵銆? },
-        { id: 12, title: '銆婁笁浣撱€嬪叏濂椾笁鍐?鍒樻厛娆?绮捐鐗?, price: 68, originalPrice: 158, location: '涓婃捣', wantCount: 189, image: 'https://picsum.photos/seed/book/400/510', tag: '', category: 'book', seller: '涔﹁櫕鐨勪功鏋?, sellerAvatar: '#A29BFE', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 456, desc: '绮捐纭３鐗堬紝鍙湅杩囦竴閬嶏紝鍩烘湰鍏ㄦ柊銆備笁浣?-3鍏ㄩ泦锛屼功瑙掓棤鎶樼棔锛屽唴椤垫棤绗旇銆? },
-        { id: 13, title: '闆呰瘲鍏伴粵灏忔鐡剁簿鍗?100ml 鍏ㄦ柊', price: 520, originalPrice: 935, location: '鍖椾含', wantCount: 156, image: 'https://picsum.photos/seed/cream/400/390', tag: '', category: 'beauty', seller: '娴锋窐灏忚兘鎵?, sellerAvatar: '#D980FA', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 234, desc: '缇庡浗瀹樼綉娴锋窐璐叆锛屽叏鏂版湭寮€灏併€傜涓冧唬灏忔鐡讹紝100ml澶у閲忥紝淇濊川鏈熷埌2027骞淬€? },
-        { id: 14, title: '灏忕背鐢靛姩婊戞澘杞ro 缁埅45km', price: 1599, originalPrice: 2799, location: '娣卞湷', wantCount: 67, image: 'https://picsum.photos/seed/scooter/400/490', tag: '鑷彁', category: 'sports', seller: '閫氬嫟涓€鏃?, sellerAvatar: '#0984E3', sellerCredit: '淇＄敤鑹ソ', sellerSold: 8, desc: '鍏徃鎼鍚庝笉闇€瑕佷簡锛岀敤浜嗗崐骞淬€傜画鑸疄娴?0km+锛屾渶楂樻椂閫?5km/h锛岄厤浠堕綈鍏ㄣ€傞檺娣卞湷鑷彁銆? },
-        { id: 15, title: '浠诲ぉ鍫?amiibo 濉炲皵杈句紶璇?鍏ㄥ8娆?, price: 450, originalPrice: 800, location: '骞垮窞', wantCount: 41, image: 'https://picsum.photos/seed/amiibo/400/410', tag: '', category: 'toy', seller: 'Switch鏀惰棌瀹?, sellerAvatar: '#E17055', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 156, desc: '鍏ㄥ8娆惧灏旇揪amiibo锛屼粎鎷嗗皝鏈娇鐢ㄣ€傞€傚悎鏀惰棌锛岄檮璧犳敹绾崇洅銆備笉鍗曞嚭锛屾墦鍖呬竴璧峰嚭銆? },
-        { id: 16, title: '鍔犳嬁澶ч箙缇界粧鏈?Expedition娲惧厠澶ц。', price: 5800, originalPrice: 9900, location: '鎴愰兘', wantCount: 112, image: 'https://picsum.photos/seed/goose/400/520', tag: '姝ｅ搧', category: 'clothes', seller: '濂緢鍝侀棽缃?, sellerAvatar: '#636E72', sellerCredit: '淇＄敤鏋佸ソ', sellerSold: 234, desc: '鍔犳嬁澶т笓鏌滆喘鍏ワ紝姝ｅ搧鍙獙銆傚彧绌夸簡涓€涓啲澶╋紝淇濇殩鏁堟灉鏋佸ソ銆傞€佸共娲楀簵娓呮礂杩囷紝鎴愯壊寰堝ソ銆侻鐮侊紝閫傚悎175-185銆? }
+        { id: 1, title: 'Apple iPhone 15 Pro Max 256GB 原色钛金属 几乎全新', price: 6999, originalPrice: 9999, location: '杭州', wantCount: 128, image: 'https://picsum.photos/seed/iphone/400/500', tag: '急售', category: 'digital', seller: '数码达人小王', sellerAvatar: '#FF6B6B', sellerCredit: '信用极好', sellerSold: 86, desc: '去年12月购入，一直带壳贴膜使用，无任何划痕磕碰。电池健康度98%，配件齐全带原装盒子。因换了新手机故出。' },
+        { id: 2, title: 'MacBook Pro 14寸 M3 Pro芯片 18GB/512GB', price: 12500, originalPrice: 16999, location: '北京', wantCount: 89, image: 'https://picsum.photos/seed/macbook/400/400', tag: '', category: 'digital', seller: '科技宅小李', sellerAvatar: '#4ECDC4', sellerCredit: '信用极好', sellerSold: 124, desc: '2024年3月购入，主要用于办公和轻度剪辑，循环次数仅50次。屏幕完美，键盘无油光，配件齐全。' },
+        { id: 3, title: 'Nike Air Jordan 1 芝加哥配色 43码 只穿过一次', price: 899, originalPrice: 1499, location: '上海', wantCount: 56, image: 'https://picsum.photos/seed/shoes/400/550', tag: '', category: 'clothes', seller: '潮鞋收藏家', sellerAvatar: '#FF8C00', sellerCredit: '信用良好', sellerSold: 32, desc: '正品购入，仅穿一次出门，几乎全新。鞋底无磨损，鞋面无折痕。43码偏小，建议42.5脚穿。' },
+        { id: 4, title: '戴森V15吸尘器 全新未拆封', price: 3299, originalPrice: 4990, location: '深圳', wantCount: 203, image: 'https://picsum.photos/seed/dyson/400/450', tag: '全新', category: 'home', seller: '居家好物推荐', sellerAvatar: '#45B7D1', sellerCredit: '信用极好', sellerSold: 567, desc: '年会奖品，全新未拆封。戴森V15 Detect Absolute，带激光探测，官网可查序列号。' },
+        { id: 5, title: 'SK-II神仙水230ml 专柜正品', price: 680, originalPrice: 1370, location: '广州', wantCount: 312, image: 'https://picsum.photos/seed/skii/400/420', tag: '', category: 'beauty', seller: '美妆代购小美', sellerAvatar: '#F06292', sellerCredit: '信用极好', sellerSold: 1023, desc: '朋友日本带回，囤货太多用不完。230ml大瓶装，塑封完好，保质期到2026年。' },
+        { id: 6, title: '索尼PS5游戏机 光驱版 带两个手柄', price: 2800, originalPrice: 3899, location: '成都', wantCount: 167, image: 'https://picsum.photos/seed/ps5/400/480', tag: '热门', category: 'digital', seller: '游戏老玩家', sellerAvatar: '#6C5CE7', sellerCredit: '信用极好', sellerSold: 45, desc: '买来玩了大半年，现在工作忙没时间玩了。光驱版带两个原装手柄，送三张实体游戏盘。' },
+        { id: 7, title: '乐高兰博基尼42115 机械组 拼过一次', price: 1599, originalPrice: 2999, location: '杭州', wantCount: 45, image: 'https://picsum.photos/seed/lego/400/460', tag: '', category: 'toy', seller: '乐高爱好者', sellerAvatar: '#F9CA24', sellerCredit: '信用良好', sellerSold: 18, desc: '拼过一次就拆了放回盒子里了，零件齐全无缺失。说明书和外盒都在，适合收藏或送礼。' },
+        { id: 8, title: '大疆DJI Mini 4 Pro 畅飞套装 带随心换', price: 5200, originalPrice: 6988, location: '武汉', wantCount: 98, image: 'https://picsum.photos/seed/drone/400/440', tag: '95新', category: 'digital', seller: '航拍爱好者', sellerAvatar: '#00B894', sellerCredit: '信用极好', sellerSold: 23, desc: '仅飞过3次，成色95新。畅飞套装含三块电池、充电管家、ND滤镜，随心换到2025年底。' },
+        { id: 9, title: '始祖鸟Beta AR冲锋衣 男款L码 黑色', price: 3200, originalPrice: 5400, location: '南京', wantCount: 76, image: 'https://picsum.photos/seed/jacket/400/500', tag: '', category: 'clothes', seller: '户外装备党', sellerAvatar: '#2D3436', sellerCredit: '信用极好', sellerSold: 67, desc: '专柜正品购入，穿着不超过5次。Gore-Tex Pro面料，防水透气性能完好。L码185左右合适。' },
+        { id: 10, title: 'Switch OLED王国之泪限定版 带游戏', price: 1800, originalPrice: 2599, location: '重庆', wantCount: 234, image: 'https://picsum.photos/seed/switch/400/430', tag: '包邮', category: 'digital', seller: '塞尔达铁粉', sellerAvatar: '#E17055', sellerCredit: '信用良好', sellerSold: 12, desc: '限定版Switch OLED，箱说全。带王国之泪卡带和Pro手柄，屏幕贴了钢化膜，无划痕。' },
+        { id: 11, title: '婴儿推车 好孩子GB 轻便折叠 9成新', price: 399, originalPrice: 899, location: '杭州', wantCount: 34, image: 'https://picsum.photos/seed/stroller/400/470', tag: '', category: 'baby', seller: '宝妈闲置转让', sellerAvatar: '#FD79A8', sellerCredit: '信用极好', sellerSold: 89, desc: '宝宝大了用不上了，9成新，使用不到半年。一键折叠，可上飞机，带遮阳篷和雨罩。' },
+        { id: 12, title: '《三体》全套三册 刘慈欣 精装版', price: 68, originalPrice: 158, location: '上海', wantCount: 189, image: 'https://picsum.photos/seed/book/400/510', tag: '', category: 'book', seller: '书虫的书架', sellerAvatar: '#A29BFE', sellerCredit: '信用极好', sellerSold: 456, desc: '精装硬壳版，只看过一遍，基本全新。三体1-3全集，书角无折痕，内页无笔记。' },
+        { id: 13, title: '雅诗兰黛小棕瓶精华 100ml 全新', price: 520, originalPrice: 935, location: '北京', wantCount: 156, image: 'https://picsum.photos/seed/cream/400/390', tag: '', category: 'beauty', seller: '海淘小能手', sellerAvatar: '#D980FA', sellerCredit: '信用极好', sellerSold: 234, desc: '美国官网海淘购入，全新未开封。第七代小棕瓶，100ml大容量，保质期到2027年。' },
+        { id: 14, title: '小米电动滑板车Pro 续航45km', price: 1599, originalPrice: 2799, location: '深圳', wantCount: 67, image: 'https://picsum.photos/seed/scooter/400/490', tag: '自提', category: 'sports', seller: '通勤一族', sellerAvatar: '#0984E3', sellerCredit: '信用良好', sellerSold: 8, desc: '公司搬家后不需要了，用了半年。续航实测40km+，最高时速25km/h，配件齐全。限深圳自提。' },
+        { id: 15, title: '任天堂 amiibo 塞尔达传说 全套8款', price: 450, originalPrice: 800, location: '广州', wantCount: 41, image: 'https://picsum.photos/seed/amiibo/400/410', tag: '', category: 'toy', seller: 'Switch收藏家', sellerAvatar: '#E17055', sellerCredit: '信用极好', sellerSold: 156, desc: '全套8款塞尔达amiibo，仅拆封未使用。适合收藏，附赠收纳盒。不单出，打包一起出。' },
+        { id: 16, title: '加拿大鹅羽绒服 Expedition派克大衣', price: 5800, originalPrice: 9900, location: '成都', wantCount: 112, image: 'https://picsum.photos/seed/goose/400/520', tag: '正品', category: 'clothes', seller: '奢侈品闲置', sellerAvatar: '#636E72', sellerCredit: '信用极好', sellerSold: 234, desc: '加拿大专柜购入，正品可验。只穿了一个冬天，保暖效果极好。送干洗店清洗过，成色很好。M码，适合175-185。' }
     ];
 
-    // ===== 妯℃嫙娑堟伅鏁版嵁 =====
+    // ===== 模拟消息数据 =====
     const mockMessages = [
-        { id: 1, name: '鏁扮爜杈句汉灏忕帇', avatar: '#FF6B6B', preview: '濂界殑锛屼环鏍煎彲浠ュ晢閲忥紝浣犳柟渚?..', time: '鍒氬垰', unread: 2, type: 'seller' },
-        { id: 2, name: '绉戞妧瀹呭皬鏉?, avatar: '#4ECDC4', preview: 'MacBook杩樺湪鍚楋紵', time: '5鍒嗛挓鍓?, unread: 0, type: 'buyer' },
-        { id: 3, name: '闂查奔灏忓姪鎵?, avatar: '#FF5000', preview: '鎮ㄧ殑瀹濊礉"iPhone 15 Pro"鑾峰緱...', time: '1灏忔椂鍓?, unread: 1, type: 'system' },
-        { id: 4, name: '娼瀷鏀惰棌瀹?, avatar: '#FF8C00', preview: '43鐮佹垜绌垮彲鑳芥湁鐐瑰ぇ...', time: '2灏忔椂鍓?, unread: 0, type: 'buyer' },
-        { id: 5, name: '灞呭濂界墿鎺ㄨ崘', avatar: '#45B7D1', preview: '宸插彂璐э紝璇锋敞鎰忔煡鏀?, time: '鏄ㄥぉ', unread: 0, type: 'seller' },
-        { id: 6, name: '娓告垙鑰佺帺瀹?, avatar: '#6C5CE7', preview: 'PS5鎴戝凡缁忔媿涓嬩簡', time: '鏄ㄥぉ', unread: 0, type: 'buyer' },
-        { id: 7, name: '绯荤粺閫氱煡', avatar: '#999', preview: '鎮ㄧ殑璐﹀彿瀹夊叏绛夌骇宸叉彁鍗?, time: '3澶╁墠', unread: 0, type: 'system' },
-        { id: 8, name: '缇庡浠ｈ喘灏忕編', avatar: '#F06292', preview: '绁炰粰姘磋繕鏈夊悧锛熸垜鎯宠', time: '3澶╁墠', unread: 0, type: 'buyer' }
+        { id: 1, name: '数码达人小王', avatar: '#FF6B6B', preview: '好的，价格可以商量，你方便...', time: '刚刚', unread: 2, type: 'seller' },
+        { id: 2, name: '科技宅小李', avatar: '#4ECDC4', preview: 'MacBook还在吗？', time: '5分钟前', unread: 0, type: 'buyer' },
+        { id: 3, name: '闲鱼小助手', avatar: '#FF5000', preview: '您的宝贝"iPhone 15 Pro"获得...', time: '1小时前', unread: 1, type: 'system' },
+        { id: 4, name: '潮鞋收藏家', avatar: '#FF8C00', preview: '43码我穿可能有点大...', time: '2小时前', unread: 0, type: 'buyer' },
+        { id: 5, name: '居家好物推荐', avatar: '#45B7D1', preview: '已发货，请注意查收', time: '昨天', unread: 0, type: 'seller' },
+        { id: 6, name: '游戏老玩家', avatar: '#6C5CE7', preview: 'PS5我已经拍下了', time: '昨天', unread: 0, type: 'buyer' },
+        { id: 7, name: '系统通知', avatar: '#999', preview: '您的账号安全等级已提升', time: '3天前', unread: 0, type: 'system' },
+        { id: 8, name: '美妆代购小美', avatar: '#F06292', preview: '神仙水还有吗？我想要', time: '3天前', unread: 0, type: 'buyer' }
     ];
 
-    // ===== 妯℃嫙楸煎鏁版嵁 =====
+    // ===== 模拟鱼塘数据 =====
     const mockFishponds = [
-        { id: 1, icon: '馃摫', title: '鏁扮爜鐖卞ソ鑰?, desc: '12.6涓囦汉', color: '#E8F5FF' },
-        { id: 2, icon: '馃憻', title: '娼瀷浜ゆ祦鍦?, desc: '8.3涓囦汉', color: '#FFF0E8' },
-        { id: 3, icon: '馃拕', title: '缇庡闂茬疆浜ゆ崲', desc: '15.2涓囦汉', color: '#FFE8F0' },
-        { id: 4, icon: '馃幃', title: '涓绘満娓告垙鐜╁', desc: '9.7涓囦汉', color: '#F0E8FF' },
-        { id: 5, icon: '馃彔', title: '瀹跺眳濂界墿鍒嗕韩', desc: '6.8涓囦汉', color: '#E8FFE8' },
-        { id: 6, icon: '馃懚', title: '瀹濆闂茬疆缇?, desc: '11.4涓囦汉', color: '#FFF8E8' },
-        { id: 7, icon: '馃摎', title: '浜屾墜涔︿氦鏄?, desc: '5.2涓囦汉', color: '#FFE8E8' },
-        { id: 8, icon: '馃弮', title: '杩愬姩瑁呭', desc: '7.1涓囦汉', color: '#E8F0FF' }
+        { id: 1, icon: '📱', title: '数码爱好者', desc: '12.6万人', color: '#E8F5FF' },
+        { id: 2, icon: '👟', title: '潮鞋交流圈', desc: '8.3万人', color: '#FFF0E8' },
+        { id: 3, icon: '💄', title: '美妆闲置交换', desc: '15.2万人', color: '#FFE8F0' },
+        { id: 4, icon: '🎮', title: '主机游戏玩家', desc: '9.7万人', color: '#F0E8FF' },
+        { id: 5, icon: '🏠', title: '家居好物分享', desc: '6.8万人', color: '#E8FFE8' },
+        { id: 6, icon: '👶', title: '宝妈闲置群', desc: '11.4万人', color: '#FFF8E8' },
+        { id: 7, icon: '📚', title: '二手书交易', desc: '5.2万人', color: '#FFE8E8' },
+        { id: 8, icon: '🏃', title: '运动装备', desc: '7.1万人', color: '#E8F0FF' }
     ];
 
-    // ===== 鐘舵€佺鐞?=====
+    // ===== 状态管理 =====
     let state = {
         currentPage: 'home',
         currentCategory: 'all',
@@ -65,7 +65,7 @@
         loadedCount: 8
     };
 
-    // ===== Toast 鎻愮ず =====
+    // ===== Toast 提示 =====
     const toast = $('#toast');
     function showToast(msg, duration = 2000) {
         toast.textContent = msg;
@@ -76,7 +76,7 @@
         }, duration);
     }
 
-    // ===== 娓叉煋鍟嗗搧鍒楄〃锛堢€戝竷娴侊級 =====
+    // ===== 渲染商品列表（瀑布流） =====
     function renderProducts(filter = 'all') {
         const productList = $('#productList');
         if (!productList) return;
@@ -92,19 +92,19 @@
                 </div>
                 <div class="product-info">
                     <div class="product-title">${p.title}</div>
-                    <div class="product-price"><span class="unit">楼</span>${p.price}</div>
+                    <div class="product-price"><span class="unit">¥</span>${p.price}</div>
                     <div class="product-meta">
                         <span class="product-location">
                             <svg viewBox="0 0 24 24" width="10" height="10"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#999"/></svg>
                             ${p.location}
                         </span>
-                        <span class="product-want">${p.wantCount}浜烘兂瑕?/span>
+                        <span class="product-want">${p.wantCount}人想要</span>
                     </div>
                 </div>
             </div>
         `).join('');
 
-        // 缁戝畾鍟嗗搧鐐瑰嚮 - 鎵撳紑璇︽儏
+        // 绑定商品点击 - 打开详情
         productList.querySelectorAll('.product-card').forEach(card => {
             card.addEventListener('click', () => {
                 const id = parseInt(card.dataset.id);
@@ -114,7 +114,7 @@
         });
     }
 
-    // ===== 鍒囨崲鍒嗙被 =====
+    // ===== 切换分类 =====
     function switchCategory(cat) {
         state.currentCategory = cat;
         $$('.category-item').forEach(item => {
@@ -127,7 +127,7 @@
         }
     }
 
-    // ===== Banner 杞挱 =====
+    // ===== Banner 轮播 =====
     function initBanner() {
         const bannerSlider = $('#bannerSlider');
         const bannerDots = $('#bannerDots');
@@ -160,34 +160,35 @@
         });
     }
 
-    // ===== 鍟嗗搧璇︽儏娴眰 =====
+    // ===== 商品详情浮层 =====
     function openDetail(product) {
         state.currentDetailProduct = product;
         const overlay = $('#detailOverlay');
         if (!overlay) return;
 
         $('#detailImages').innerHTML = `<img src="${product.image}" alt="${product.title}">`;
-        $('#detailPrice').innerHTML = `<span class="unit">楼</span>${product.price}<span style="font-size:13px;color:#999;font-weight:400;margin-left:8px;text-decoration:line-through">楼${product.originalPrice}</span>`;
+        $('#detailPrice').innerHTML = `<span class="unit">¥</span>${product.price}<span style="font-size:13px;color:#999;font-weight:400;margin-left:8px;text-decoration:line-through">¥${product.originalPrice}</span>`;
         $('#detailTitle').textContent = product.title;
         $('#detailTags').innerHTML = product.tag ? `<span class="detail-tag">${product.tag}</span>` : '';
-        $('#detailDesc').textContent = product.desc || '鍗栧寰堟噿锛岃繕娌℃湁濉啓鎻忚堪...';
+        $('#detailDesc').textContent = product.desc || '卖家很懒，还没有填写描述...';
 
         $('#detailSeller').innerHTML = `
             <div class="detail-seller-avatar" style="background:${product.sellerAvatar || '#f0f0f0'};color:#fff;font-size:18px;font-weight:600">${product.seller.charAt(0)}</div>
             <div class="detail-seller-info">
                 <div class="detail-seller-name">${product.seller}</div>
-                <div class="detail-seller-badge">${product.sellerCredit || '淇＄敤鑹ソ'}</div>
+                <div class="detail-seller-badge">${product.sellerCredit || '信用良好'}</div>
             </div>
-            <div class="detail-seller-stats">宸插崠鍑?{product.sellerSold || 0}浠?/div>
+            <div class="detail-seller-stats">已卖出${product.sellerSold || 0}件</div>
         `;
 
-        // 鏀惰棌鐘舵€?        const btnFav = $('#btnFav');
+        // 收藏状态
+        const btnFav = $('#btnFav');
         if (state.favorites.has(product.id)) {
             btnFav.classList.add('faved');
-            btnFav.querySelector('span').textContent = '宸叉敹钘?;
+            btnFav.querySelector('span').textContent = '已收藏';
         } else {
             btnFav.classList.remove('faved');
-            btnFav.querySelector('span').textContent = '鏀惰棌';
+            btnFav.querySelector('span').textContent = '收藏';
         }
 
         overlay.classList.add('show');
@@ -200,20 +201,20 @@
         document.body.style.overflow = '';
     }
 
-    // ===== 鑱婂ぉ娴眰 =====
+    // ===== 聊天浮层 =====
     function openChat(user) {
         state.currentChatUser = user;
         state.chatMessages = [
-            { text: '浣犲ソ锛岃繖涓疂璐濊繕鍦ㄥ悧锛?, me: true },
-            { text: '鍦ㄧ殑锛屼翰鎯宠鐨勮瘽鍙互鐩存帴鎷嶅摝~', me: false },
-            { text: '浠锋牸杩樿兘渚垮疁鐐瑰悧锛?, me: true },
-            { text: '鍙互灏忓垁鍝︼紝鎮ㄨ涓績鐞嗕环浣?, me: false }
+            { text: '你好，这个宝贝还在吗？', me: true },
+            { text: '在的，亲想要的话可以直接拍哦~', me: false },
+            { text: '价格还能便宜点吗？', me: true },
+            { text: '可以小刀哦，您说个心理价位', me: false }
         ];
 
         const overlay = $('#chatOverlay');
         if (!overlay) return;
 
-        $('#chatName').textContent = user.name || user.seller || '鍗栧';
+        $('#chatName').textContent = user.name || user.seller || '卖家';
         renderChatMessages();
         overlay.classList.add('show');
         document.body.style.overflow = 'hidden';
@@ -248,21 +249,21 @@
         input.value = '';
         renderChatMessages();
 
-        // 妯℃嫙鍥炲
+        // 模拟回复
         setTimeout(() => {
             const replies = [
-                '濂界殑锛屾垜鑰冭檻涓€涓媬',
-                '鍙互锛岄偅灏辫繖涔堝畾浜?,
-                '宸插彂璐э紝璇锋敞鎰忔煡鏀?,
-                '鍦ㄧ殑锛岄殢鏃跺彲浠ユ媿',
-                '鍙互灏忓垁锛屾偍璇翠釜浠?
+                '好的，我考虑一下~',
+                '可以，那就这么定了',
+                '已发货，请注意查收',
+                '在的，随时可以拍',
+                '可以小刀，您说个价'
             ];
             state.chatMessages.push({ text: replies[Math.floor(Math.random() * replies.length)], me: false });
             renderChatMessages();
         }, 800 + Math.random() * 1200);
     }
 
-    // ===== 娓叉煋娑堟伅鍒楄〃 =====
+    // ===== 渲染消息列表 =====
     function renderMessages(filter = 'all') {
         const list = $('#messageList');
         if (!list) return;
@@ -291,7 +292,7 @@
         });
     }
 
-    // ===== 娓叉煋楸煎鍒楄〃 =====
+    // ===== 渲染鱼塘列表 =====
     function renderFishponds() {
         const grid = $('#fishpondList');
         if (!grid) return;
@@ -306,12 +307,12 @@
 
         grid.querySelectorAll('.fp-card').forEach((card, i) => {
             card.addEventListener('click', () => {
-                showToast(`姝ｅ湪杩涘叆${mockFishponds[i].title}...`);
+                showToast(`正在进入${mockFishponds[i].title}...`);
             });
         });
     }
 
-    // ===== 椤甸潰鍒囨崲 =====
+    // ===== 页面切换 =====
     function switchPage(page) {
         state.currentPage = page;
 
@@ -340,14 +341,14 @@
         if (page === 'fishpond') renderFishponds();
     }
 
-    // ===== 浜嬩欢缁戝畾 =====
+    // ===== 事件绑定 =====
     function bindEvents() {
-        // 搴曢儴瀵艰埅
+        // 底部导航
         $$('.nav-item').forEach(item => {
             item.addEventListener('click', () => switchPage(item.dataset.page));
         });
 
-        // 鍒嗙被鍒囨崲
+        // 分类切换
         const categoryScroll = $('#categoryScroll');
         if (categoryScroll) {
             categoryScroll.addEventListener('click', (e) => {
@@ -356,7 +357,7 @@
             });
         }
 
-        // 鍒嗙被鏇村
+        // 分类更多
         const categoryMoreBtn = $('#categoryMoreBtn');
         if (categoryMoreBtn) {
             categoryMoreBtn.addEventListener('click', () => {
@@ -365,7 +366,7 @@
             });
         }
 
-        // 鍩庡競閫夋嫨
+        // 城市选择
         const locationBtn = $('#locationBtn');
         const locationModal = $('#locationModal');
         if (locationBtn && locationModal) {
@@ -379,12 +380,12 @@
                     const locText = $('.location-text');
                     if (locText) locText.textContent = tag.textContent;
                     locationModal.classList.remove('show');
-                    showToast(`宸插垏鎹㈠埌${tag.textContent}`);
+                    showToast(`已切换到${tag.textContent}`);
                 });
             });
         }
 
-        // 璇︽儏娴眰鍏抽棴
+        // 详情浮层关闭
         const detailOverlay = $('#detailOverlay');
         if (detailOverlay) {
             $('#detailClose').addEventListener('click', closeDetail);
@@ -393,7 +394,7 @@
             });
         }
 
-        // 璇︽儏娴眰鎸夐挳
+        // 详情浮层按钮
         const btnFav = $('#btnFav');
         if (btnFav) {
             btnFav.addEventListener('click', () => {
@@ -402,13 +403,13 @@
                 if (state.favorites.has(product.id)) {
                     state.favorites.delete(product.id);
                     btnFav.classList.remove('faved');
-                    btnFav.querySelector('span').textContent = '鏀惰棌';
-                    showToast('宸插彇娑堟敹钘?);
+                    btnFav.querySelector('span').textContent = '收藏';
+                    showToast('已取消收藏');
                 } else {
                     state.favorites.add(product.id);
                     btnFav.classList.add('faved');
-                    btnFav.querySelector('span').textContent = '宸叉敹钘?;
-                    showToast('宸插姞鍏ユ敹钘?);
+                    btnFav.querySelector('span').textContent = '已收藏';
+                    showToast('已加入收藏');
                 }
             });
         }
@@ -429,13 +430,13 @@
             btnWant.addEventListener('click', () => {
                 const product = state.currentDetailProduct;
                 if (product) {
-                    showToast('宸叉彁浜よ喘涔版剰鍚戯紝绛夊緟鍗栧纭');
+                    showToast('已提交购买意向，等待卖家确认');
                     setTimeout(closeDetail, 1500);
                 }
             });
         }
 
-        // 鑱婂ぉ娴眰
+        // 聊天浮层
         const chatOverlay = $('#chatOverlay');
         if (chatOverlay) {
             $('#chatBack').addEventListener('click', closeChat);
@@ -448,13 +449,13 @@
             }
         }
 
-        // 娑堟伅鎸夐挳
+        // 消息按钮
         const msgBtn = $('#msgBtn');
         if (msgBtn) {
             msgBtn.addEventListener('click', () => switchPage('messages'));
         }
 
-        // 娑堟伅鏍囩鍒囨崲
+        // 消息标签切换
         $$('.msg-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 $$('.msg-tab').forEach(t => t.classList.remove('active'));
@@ -463,12 +464,12 @@
             });
         });
 
-        // 鎼滅储
+        // 搜索
         const searchInput = $('#searchInput');
         if (searchInput) {
             searchInput.addEventListener('focus', () => {
                 searchInput.removeAttribute('readonly');
-                showToast('杈撳叆鍏抽敭璇嶆悳绱㈤棽缃ソ鐗?);
+                showToast('输入关键词搜索闲置好物');
             });
             searchInput.addEventListener('blur', () => {
                 if (!searchInput.value) searchInput.setAttribute('readonly', '');
@@ -483,7 +484,7 @@
                         );
                         productList.innerHTML = filtered.length ?
                             filtered.map(p => renderProductCardHTML(p)).join('') :
-                            '<div class="load-more">娌℃湁鎵惧埌鐩稿叧瀹濊礉</div>';
+                            '<div class="load-more">没有找到相关宝贝</div>';
                         productList.querySelectorAll('.product-card').forEach(card => {
                             card.addEventListener('click', () => {
                                 const id = parseInt(card.dataset.id);
@@ -498,68 +499,70 @@
             });
         }
 
-        // 鎵爜鎸夐挳
+        // 扫码按钮
         const scanBtn = $('#scanBtn');
         if (scanBtn) {
-            scanBtn.addEventListener('click', () => showToast('鎵爜鎼滅储鍔熻兘寮€鍙戜腑...'));
+            scanBtn.addEventListener('click', () => showToast('扫码搜索功能开发中...'));
         }
 
-        // 鎹竴鎵规寜閽?        const refreshBtn = $('#refreshBtn');
+        // 换一批按钮
+        const refreshBtn = $('#refreshBtn');
         if (refreshBtn) {
             refreshBtn.addEventListener('click', () => {
                 state.products = [...mockProducts].sort(() => Math.random() - 0.5);
                 renderProducts(state.currentCategory);
-                showToast('宸插埛鏂版帹鑽?);
+                showToast('已刷新推荐');
             });
         }
 
-        // 蹇嵎鍏ュ彛
+        // 快捷入口
         $$('.entry-item').forEach(item => {
             item.addEventListener('click', () => {
                 const action = item.dataset.action;
                 if (action === 'publish') switchPage('publish');
                 else if (action === 'fishpond') switchPage('fishpond');
-                else showToast('鍔熻兘寮€鍙戜腑...');
+                else showToast('功能开发中...');
             });
         });
 
-        // 鍙戝竷鎸夐挳
+        // 发布按钮
         const publishBtn = $('.btn-publish');
         if (publishBtn) {
             publishBtn.addEventListener('click', () => {
-                showToast('鍙戝竷鎴愬姛锛?);
+                showToast('发布成功！');
                 setTimeout(() => switchPage('home'), 1500);
             });
         }
 
-        // 涓婁紶鍖哄煙
+        // 上传区域
         const uploadArea = $('#uploadArea');
         if (uploadArea) {
-            uploadArea.addEventListener('click', () => showToast('閫夋嫨鍥剧墖涓婁紶'));
+            uploadArea.addEventListener('click', () => showToast('选择图片上传'));
         }
 
-        // 缂栬緫璧勬枡
+        // 编辑资料
         const btnEditProfile = $('.btn-edit-profile');
         if (btnEditProfile) {
-            btnEditProfile.addEventListener('click', () => showToast('缂栬緫璧勬枡鍔熻兘寮€鍙戜腑...'));
+            btnEditProfile.addEventListener('click', () => showToast('编辑资料功能开发中...'));
         }
 
-        // 鑿滃崟椤圭偣鍑?        $$('.menu-item').forEach(item => {
+        // 菜单项点击
+        $$('.menu-item').forEach(item => {
             item.addEventListener('click', () => {
                 const text = item.querySelector('span').textContent;
-                showToast(`${text}鍔熻兘寮€鍙戜腑...`);
+                showToast(`${text}功能开发中...`);
             });
         });
 
-        // 璁㈠崟鍥炬爣
+        // 订单图标
         $$('.order-icon-item').forEach(item => {
             item.addEventListener('click', () => {
                 const text = item.querySelector('span').textContent;
-                showToast(`鏌ョ湅${text}璁㈠崟`);
+                showToast(`查看${text}订单`);
             });
         });
 
-        // 杩斿洖椤堕儴
+        // 返回顶部
         const btnBackTop = $('#btnBackTop');
         if (btnBackTop) {
             btnBackTop.addEventListener('click', () => {
@@ -570,21 +573,22 @@
             });
         }
 
-        // 涓婃媺鍔犺浇鏇村
+        // 上拉加载更多
         const loadMore = $('#loadMore');
         if (loadMore) {
             loadMore.addEventListener('click', () => {
-                showToast('鍔犺浇涓?..');
+                showToast('加载中...');
                 setTimeout(() => {
                     const extra = mockProducts.map(p => ({ ...p, id: p.id + 100 }));
                     state.products = [...state.products, ...extra];
                     renderProducts(state.currentCategory);
-                    showToast('鍔犺浇瀹屾垚');
+                    showToast('加载完成');
                 }, 800);
             });
         }
 
-        // 閿洏蹇嵎閿?        document.addEventListener('keydown', (e) => {
+        // 键盘快捷键
+        document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeDetail();
                 closeChat();
@@ -593,7 +597,7 @@
             }
         });
 
-        // 鐘舵€佹爮鏃堕棿鏇存柊
+        // 状态栏时间更新
         updateStatusBarTime();
         setInterval(updateStatusBarTime, 30000);
     }
@@ -615,20 +619,20 @@
                 </div>
                 <div class="product-info">
                     <div class="product-title">${p.title}</div>
-                    <div class="product-price"><span class="unit">楼</span>${p.price}</div>
+                    <div class="product-price"><span class="unit">¥</span>${p.price}</div>
                     <div class="product-meta">
                         <span class="product-location">
                             <svg viewBox="0 0 24 24" width="10" height="10"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#999"/></svg>
                             ${p.location}
                         </span>
-                        <span class="product-want">${p.wantCount}浜烘兂瑕?/span>
+                        <span class="product-want">${p.wantCount}人想要</span>
                     </div>
                 </div>
             </div>
         `;
     }
 
-    // ===== 鍒濆鍖?=====
+    // ===== 初始化 =====
     function init() {
         renderProducts();
         initBanner();
